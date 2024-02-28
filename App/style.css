@@ -34,7 +34,9 @@ body, html {
   width: 100%;
   height: 100%;
   pointer-events: none;
+  
 }
+
 
 .img-container {
   display: inline-flex;
@@ -43,8 +45,8 @@ body, html {
 .img-container img {
   width: 100%;
   height: auto;
-  display: block;
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  /* display: block;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); */
 }
 
 .cuadricula{
@@ -64,8 +66,8 @@ body{
 }
 
 .pieces-size{
-  width: 40%;
-  height: 40%;
+  width: 787px;
+  height: 789px;
   display: flex;
   justify-content: center;
   align-items: center;
