@@ -3,8 +3,6 @@ const origX = [200, 304, 446, 200];
 const origY = [100, 100, 233, 204];
 const winAudio = document.getElementById("win");
 
-
-
 piezas.forEach((pieza, index) => {
   const tamWidth = [134, 192, 134, 163];
   const tamHeight = [163, 134, 163, 134];
@@ -51,8 +49,6 @@ function soltarElemento() {
   testing();
 }
 
-
-
 function testing() {
   const bienUbicadas = Array.from(piezas).filter((pieza, index) => {
     const posx = parseFloat(pieza.style.left);
@@ -73,10 +69,10 @@ function iman() {
 
       // Define las coordenadas específicas para cada pieza
       const coordenadas = {
-        A: { left: -34, top: -67 },
-        B: { left: 291, top: -14 },
-        C: { left: -69, top: 251 },
-        D: { left: 246, top: 305 },
+        A: { left: 532, top: 0 },
+        B: { left: 858, top: 52 },
+        C: { left: 499, top: 315 },
+        D: { left: 813, top: 372 },
       };
 
       // Aumenta la distancia de detección a 30 píxeles
@@ -84,14 +80,17 @@ function iman() {
 
       // Verifica si la pieza se soltó cerca de las coordenadas específicas
       for (const etiqueta in coordenadas) {
-        if (Math.abs(posx - coordenadas[etiqueta].left) < distanciaDeteccion && Math.abs(posy - coordenadas[etiqueta].top) < distanciaDeteccion) {
+        if (
+          Math.abs(posx - coordenadas[etiqueta].left) < distanciaDeteccion &&
+          Math.abs(posy - coordenadas[etiqueta].top) < distanciaDeteccion
+        ) {
           // Mueve la pieza a las coordenadas específicas
           pieza.style.left = `${coordenadas[etiqueta].left}px`;
           pieza.style.top = `${coordenadas[etiqueta].top}px`;
-          
+
           // Desactiva la capacidad de mover la pieza
           pieza.style.pointerEvents = "none";
-          
+
           // Aplica una transición suave para el acomodamiento
           pieza.style.transition = "top 0.3s, left 0.3s";
           break; // Detiene el bucle una vez que se encuentra una coincidencia
@@ -105,7 +104,7 @@ function establecerPosicionesAleatoriasCercaDelCentro() {
   piezas.forEach((pieza, index) => {
     const tamWidth = [134, 192, 134, 163];
     const tamHeight = [163, 134, 163, 134];
-    
+
     // Calcula posiciones aleatorias más a la derecha y un poco más lejos del centro
     const posicionAleatoriaX = 400 + Math.floor(Math.random() * 50); // Ajusta la posición X hacia la derecha
     const posicionAleatoriaY = 200 + Math.floor(Math.random() * 50); // Ajusta la posición Y hacia abajo
@@ -124,12 +123,10 @@ function establecerPosicionesAleatoriasCercaDelCentro() {
 // Llama a la función para establecer posiciones aleatorias cerca del centro de la pantalla al cargar la página.
 establecerPosicionesAleatoriasCercaDelCentro();
 
+const middleLayer = document.getElementById("middleLayer");
+const bottomLayer = document.getElementById("bottomLayer");
 
-const middleLayer = document.getElementById('middleLayer');
-const bottomLayer = document.getElementById('bottomLayer');
-
-middleLayer.addEventListener('click', () => {
-    middleLayer.style.pointerEvents = 'none';
-    bottomLayer.style.pointerEvents = 'auto';
+middleLayer.addEventListener("click", () => {
+  middleLayer.style.pointerEvents = "none";
+  bottomLayer.style.pointerEvents = "auto";
 });
- 
