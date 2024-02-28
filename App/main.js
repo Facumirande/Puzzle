@@ -69,7 +69,7 @@ function iman() {
 
       // Define las coordenadas específicas para cada pieza
       const coordenadas = {
-        A: { left: 532, top: 0 },
+        A: { left: 30, top: 30 },
         B: { left: 858, top: 52 },
         C: { left: 499, top: 315 },
         D: { left: 813, top: 372 },
@@ -85,8 +85,8 @@ function iman() {
           Math.abs(posy - coordenadas[etiqueta].top) < distanciaDeteccion
         ) {
           // Mueve la pieza a las coordenadas específicas
-          pieza.style.left = `${coordenadas[etiqueta].left}px`;
-          pieza.style.top = `${coordenadas[etiqueta].top}px`;
+          pieza.style.left = `${coordenadas[etiqueta].left}%`;
+          pieza.style.top = `${coordenadas[etiqueta].top}%`;
 
           // Desactiva la capacidad de mover la pieza
           pieza.style.pointerEvents = "none";
