@@ -3,9 +3,17 @@ const origX = [200, 304, 446, 200];
 const origY = [100, 100, 233, 204];
 const winAudio = document.getElementById("win");
 
+// Mapea las letras A, B, C, D con las piezas
+const letras = ["A", "B", "C", "D"];
+const piezasPorLetra = {};
+
 piezas.forEach((pieza, index) => {
   const tamWidth = [134, 192, 134, 163];
   const tamHeight = [163, 134, 163, 134];
+
+  // Asigna la letra a la pieza
+  const letra = letras[index];
+  piezasPorLetra[letra] = pieza;
 
   pieza.width = `${tamWidth[index]}px`;
   pieza.height = `${tamHeight[index]}px`;
@@ -61,62 +69,82 @@ function testing() {
   }
 }
 
-// const div = document.getElementById("mi-div");
-// const destino = div.getBoundingClientRect();
-// console.log(destino.left);
-
 let miDiv = document.getElementById("mi-div");
 let coordenadaTop = 0;
 let coordenadaLeft = 0;
+let coordenadaBottom = 0;
+let coordenadaRight = 0;
 
-// Recorrer la cadena de elementos padre y sumar las coordenadas
+let anchoDiv = miDiv.offsetWidth;
+let altoDiv = miDiv.offsetHeight;
+
 while (miDiv) {
   coordenadaTop += miDiv.offsetTop;
   coordenadaLeft += miDiv.offsetLeft;
+
+  coordenadaBottom = coordenadaTop + miDiv.offsetHeight;
+  coordenadaRight = coordenadaLeft + miDiv.offsetWidth;
+
   miDiv = miDiv.offsetParent;
 }
 
-// Imprimir las coordenadas con respecto al documento completo
-console.log("Coordenada superior (top): " + coordenadaTop);
-console.log("Coordenada izquierda (left): " + coordenadaLeft);
+let anchoPorcentual = anchoDiv / 100;
+let altoPorcentual = altoDiv / 100;
 
 function iman() {
   piezas.forEach((pieza) => {
     pieza.addEventListener("mouseup", () => {
       const posx = parseFloat(pieza.style.left);
       const posy = parseFloat(pieza.style.top);
-      // Define las coordenadas específicas para cada pieza
-      const coordenadas = {
-        A: { left: coordenadaLeft - 35, top: coordenadaTop - 63 },
-        B: { left: coordenadaLeft + 292, top: coordenadaTop - 11 },
-        C: { left: coordenadaLeft - 69, top: coordenadaTop + 250 },
-        D: { left: coordenadaLeft + 246, top: coordenadaTop + 305 },
-      };
-      console.log(`left:${posx}  top:${posy}`);
 
-      // Aumenta la distancia de detección a 30 píxeles
+      const letra = obtenerLetraPorPieza(pieza);
+
+      const coordenadas = {
+        A: {
+          left: coordenadaLeft - anchoPorcentual * 4.5,
+          top: coordenadaTop - altoPorcentual * 8.3,
+        },
+        B: {
+          left: coordenadaLeft + anchoPorcentual * 37,
+          top: coordenadaTop - altoPorcentual * 1.5,
+        },
+        C: {
+          left: coordenadaLeft - anchoPorcentual * 8.5,
+          top: coordenadaTop + altoPorcentual * 31.8,
+        },
+        D: {
+          left: coordenadaLeft + anchoPorcentual * 31.3,
+          top: coordenadaTop + altoPorcentual * 38.7,
+        },
+      };
+
       const distanciaDeteccion = 30;
 
-      // Verifica si la pieza se soltó cerca de las coordenadas específicas
       for (const etiqueta in coordenadas) {
         if (
           Math.abs(posx - coordenadas[etiqueta].left) < distanciaDeteccion &&
           Math.abs(posy - coordenadas[etiqueta].top) < distanciaDeteccion
         ) {
-          // Mueve la pieza a las coordenadas específicas
           pieza.style.left = `${coordenadas[etiqueta].left}px`;
           pieza.style.top = `${coordenadas[etiqueta].top}px`;
 
-          // Desactiva la capacidad de mover la pieza
           pieza.style.pointerEvents = "none";
-
-          // Aplica una transición suave para el acomodamiento
           pieza.style.transition = "top 0.3s, left 0.3s";
-          break; // Detiene el bucle una vez que se encuentra una coincidencia
+          break;
         }
       }
     });
   });
+}
+
+function obtenerLetraPorPieza(pieza) {
+  // Itera sobre el objeto piezasPorLetra para encontrar la letra correspondiente a la pieza
+  for (const letra in piezasPorLetra) {
+    if (piezasPorLetra[letra] === pieza) {
+      return letra;
+    }
+  }
+  return null; // Si no se encuentra la letra
 }
 
 function establecerPosicionesAleatoriasCercaDelCentro() {
@@ -124,9 +152,8 @@ function establecerPosicionesAleatoriasCercaDelCentro() {
     const tamWidth = [134, 192, 134, 163];
     const tamHeight = [163, 134, 163, 134];
 
-    // Calcula posiciones aleatorias más a la derecha y un poco más lejos del centro
-    const posicionAleatoriaX = 400 + Math.floor(Math.random() * 50); // Ajusta la posición X hacia la derecha
-    const posicionAleatoriaY = 200 + Math.floor(Math.random() * 50); // Ajusta la posición Y hacia abajo
+    const posicionAleatoriaX = 400 + Math.floor(Math.random() * 50);
+    const posicionAleatoriaY = 200 + Math.floor(Math.random() * 50);
 
     pieza.width = `${tamWidth[index]}px`;
     pieza.height = `${tamHeight[index]}px`;
@@ -135,6 +162,6 @@ function establecerPosicionesAleatoriasCercaDelCentro() {
     pieza.style.top = `${posicionAleatoriaY}px`;
 
     pieza.addEventListener("mousedown", seleccionarElemento);
-    pieza.addEventListener("dragstart", (e) => e.preventDefault()); // Evitar el arrastre por defecto
+    pieza.addEventListener("dragstart", (e) => e.preventDefault());
   });
 }
