@@ -66,10 +66,11 @@ function iman() {
     pieza.addEventListener("mouseup", () => {
       const posx = parseFloat(pieza.style.left);
       const posy = parseFloat(pieza.style.top);
+      const div = document.getElementById("mi-div");
 
       // Define las coordenadas específicas para cada pieza
       const coordenadas = {
-        A: { left: 30, top: 30 },
+        A: { left: 123, top: 123 },
         B: { left: 858, top: 52 },
         C: { left: 499, top: 315 },
         D: { left: 813, top: 372 },
@@ -85,8 +86,8 @@ function iman() {
           Math.abs(posy - coordenadas[etiqueta].top) < distanciaDeteccion
         ) {
           // Mueve la pieza a las coordenadas específicas
-          pieza.style.left = `${coordenadas[etiqueta].left}%`;
-          pieza.style.top = `${coordenadas[etiqueta].top}%`;
+          pieza.style.left = `${coordenadas[etiqueta].left}px`;
+          pieza.style.top = `${coordenadas[etiqueta].top}px`;
 
           // Desactiva la capacidad de mover la pieza
           pieza.style.pointerEvents = "none";
