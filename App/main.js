@@ -67,10 +67,11 @@ function iman() {
       const posx = parseFloat(pieza.style.left);
       const posy = parseFloat(pieza.style.top);
       const div = document.getElementById("mi-div");
+      const destino = div.getBoundingClientRect();
 
       // Define las coordenadas específicas para cada pieza
       const coordenadas = {
-        A: { left: 123, top: 123 },
+        A: { left: destino.left, top: destino.top },
         B: { left: 858, top: 52 },
         C: { left: 499, top: 315 },
         D: { left: 813, top: 372 },
