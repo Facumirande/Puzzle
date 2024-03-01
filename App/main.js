@@ -61,21 +61,38 @@ function testing() {
   }
 }
 
+// const div = document.getElementById("mi-div");
+// const destino = div.getBoundingClientRect();
+// console.log(destino.left);
+
+let miDiv = document.getElementById("mi-div");
+let coordenadaTop = 0;
+let coordenadaLeft = 0;
+
+// Recorrer la cadena de elementos padre y sumar las coordenadas
+while (miDiv) {
+  coordenadaTop += miDiv.offsetTop;
+  coordenadaLeft += miDiv.offsetLeft;
+  miDiv = miDiv.offsetParent;
+}
+
+// Imprimir las coordenadas con respecto al documento completo
+console.log("Coordenada superior (top): " + coordenadaTop);
+console.log("Coordenada izquierda (left): " + coordenadaLeft);
+
 function iman() {
   piezas.forEach((pieza) => {
     pieza.addEventListener("mouseup", () => {
       const posx = parseFloat(pieza.style.left);
       const posy = parseFloat(pieza.style.top);
-      const div = document.getElementById("mi-div");
-      const destino = div.getBoundingClientRect();
-
       // Define las coordenadas específicas para cada pieza
       const coordenadas = {
-        A: { left: destino.left, top: destino.top },
-        B: { left: 858, top: 52 },
-        C: { left: 499, top: 315 },
-        D: { left: 813, top: 372 },
+        A: { left: coordenadaLeft - 35, top: coordenadaTop - 63 },
+        B: { left: coordenadaLeft + 292, top: coordenadaTop - 11 },
+        C: { left: coordenadaLeft - 69, top: coordenadaTop + 250 },
+        D: { left: coordenadaLeft + 246, top: coordenadaTop + 305 },
       };
+      console.log(`left:${posx}  top:${posy}`);
 
       // Aumenta la distancia de detección a 30 píxeles
       const distanciaDeteccion = 30;
@@ -121,14 +138,3 @@ function establecerPosicionesAleatoriasCercaDelCentro() {
     pieza.addEventListener("dragstart", (e) => e.preventDefault()); // Evitar el arrastre por defecto
   });
 }
-
-// Llama a la función para establecer posiciones aleatorias cerca del centro de la pantalla al cargar la página.
-establecerPosicionesAleatoriasCercaDelCentro();
-
-const middleLayer = document.getElementById("middleLayer");
-const bottomLayer = document.getElementById("bottomLayer");
-
-middleLayer.addEventListener("click", () => {
-  middleLayer.style.pointerEvents = "none";
-  bottomLayer.style.pointerEvents = "auto";
-});
