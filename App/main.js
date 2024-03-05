@@ -2,6 +2,10 @@ const piezas = document.querySelectorAll(".movil");
 const origX = [200, 304, 446, 200];
 const origY = [100, 100, 233, 204];
 const winAudio = document.getElementById("win");
+const cero = document.querySelector("letraA");
+const uno = document.querySelector("letraB");
+const dos = document.querySelector("letraC");
+const tres = document.querySelector("letraD");
 
 piezas.forEach((pieza, index) => {
   const tamWidth = [134, 192, 134, 163];
@@ -66,27 +70,9 @@ function testing() {
 // console.log(destino.left);
 
 let miDiv = document.getElementById("mi-div");
-let coordenadaTop = 0;
-let coordenadaLeft = 0;
-let coordenadaBottom = 0;
-let coordenadaRight = 0;
 
 let anchoDiv = miDiv.offsetWidth;
 let altoDiv = miDiv.offsetHeight;
-
-// Recorrer la cadena de elementos padre y sumar las coordenadas
-while (miDiv) {
-  coordenadaTop += miDiv.offsetTop;
-  coordenadaLeft += miDiv.offsetLeft;
-
-  // Calcular la coordenadaBottom sumando la altura del elemento al top
-  coordenadaBottom = coordenadaTop + miDiv.offsetHeight;
-
-  // Calcular la coordenadaRight sumando el ancho del elemento al left
-  coordenadaRight = coordenadaLeft + miDiv.offsetWidth;
-
-  miDiv = miDiv.offsetParent;
-}
 
 let anchoPorcentual = anchoDiv / 100;
 let altoPorcentual = altoDiv / 100;
@@ -96,6 +82,12 @@ function iman() {
     pieza.addEventListener("mouseup", () => {
       const posx = parseFloat(pieza.style.left);
       const posy = parseFloat(pieza.style.top);
+      const coordenadaLeft = miDiv.offsetLeft;
+      const coordenadaTop = miDiv.offsetTop;
+
+      letraA.style.left = coordenadaLeft + anchoPorcentual * 37;
+      letraA.style.top = coordenadaTop - altoPorcentual * 1.5;
+
       // Define las coordenadas específicas para cada pieza
       const coordenadas = {
         A: {
@@ -140,50 +132,7 @@ function iman() {
   });
 }
 
-function establecerPosicionesAleatoriasCercaDelCentro() {
-  piezas.forEach((pieza, index) => {
-    const tamWidth = [134, 192, 134, 163];
-    const tamHeight = [163, 134, 163, 134];
-
-    // Calcula posiciones aleatorias más a la derecha y un poco más lejos del centro
-    const posicionAleatoriaX = 400 + Math.floor(Math.random() * 50); // Ajusta la posición X hacia la derecha
-    const posicionAleatoriaY = 200 + Math.floor(Math.random() * 50); // Ajusta la posición Y hacia abajo
-
-    pieza.width = `${tamWidth[index]}px`;
-    pieza.height = `${tamHeight[index]}px`;
-    pieza.style.position = "absolute";
-    pieza.style.left = `${posicionAleatoriaX}px`;
-    pieza.style.top = `${posicionAleatoriaY}px`;
-
-    pieza.addEventListener("mousedown", seleccionarElemento);
-    pieza.addEventListener("dragstart", (e) => e.preventDefault()); // Evitar el arrastre por defecto
-  });
+function acomodarPiezasFixed(coordenadaLeft, coordenadaTop) {
+  uno.style.left = coordenadaLeft + anchoPorcentual * 37;
+  uno.style.top = coordenadaTop - altoPorcentual * 1.5;
 }
-
-function acomodarPiezas() {
-  let miDiv = {
-    A: document.querySelector("#pieces .0"),
-    B: document.querySelector("#pieces .1"),
-    C: document.querySelector("#pieces .2"),
-    D: document.querySelector("#pieces .3"),
-  };
-
-  // Verifica si se encontraron todos los elementos antes de asignar estilos
-  if (miDiv.A && miDiv.B && miDiv.C && miDiv.D) {
-    miDiv.A.style.left = coordenadaLeft - anchoPorcentual * 4.5 + "px";
-    miDiv.A.style.top = coordenadaTop - altoPorcentual * 8.3 + "px";
-
-    miDiv.B.style.left = coordenadaLeft + anchoPorcentual * 37 + "px";
-    miDiv.B.style.top = coordenadaTop - altoPorcentual * 1.5 + "px";
-
-    miDiv.C.style.left = coordenadaLeft - anchoPorcentual * 8.5 + "px";
-    miDiv.C.style.top = coordenadaTop + altoPorcentual * 31.8 + "px";
-
-    miDiv.D.style.left = coordenadaLeft + anchoPorcentual * 31.3 + "px";
-    miDiv.D.style.top = coordenadaTop + altoPorcentual * 38.7 + "px";
-  } else {
-    console.error("No se encontraron todos los elementos dentro del contenedor.");
-  }
-  document.getElementById("updateButton").addEventListener("click", acomodarPiezas);
-}
-
