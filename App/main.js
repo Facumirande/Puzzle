@@ -7,6 +7,8 @@ const uno = document.querySelector("letraB");
 const dos = document.querySelector("letraC");
 const tres = document.querySelector("letraD");
 
+let coordenadasResize = {};
+
 piezas.forEach((pieza, index) => {
   const tamWidth = [134, 192, 134, 163];
   const tamHeight = [163, 134, 163, 134];
@@ -74,8 +76,6 @@ function iman(cero, uno, dos, tres) {
     pieza.addEventListener("mouseup", () => {
       const posx = parseFloat(pieza.style.left);
       const posy = parseFloat(pieza.style.top);
-      const coordenadaLeft = miDiv.offsetLeft;
-      const coordenadaTop = miDiv.offsetTop;
 
       // Define las coordenadas específicas para cada pieza
       const coordenadas = {
@@ -126,7 +126,10 @@ function iman(cero, uno, dos, tres) {
   });
 }
 
-let coordenadasResize = { A: null, B: null, C: null, D: null };
+
+const coordenadaLeft = miDiv.offsetLeft;
+const coordenadaTop = miDiv.offsetTop;
+
 
 window.onresize = resize;
 
