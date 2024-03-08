@@ -59,15 +59,7 @@ function testing() {
     const posy = parseFloat(pieza.style.top);
     return origX[index] === posx && origY[index] === posy;
   });
-
-  if (bienUbicadas.length === piezas.length) {
-    winAudio.play();
-  }
 }
-
-// const div = document.getElementById("mi-div");
-// const destino = div.getBoundingClientRect();
-// console.log(destino.left);
 
 let miDiv = document.getElementById("mi-div");
 
@@ -77,16 +69,13 @@ let altoDiv = miDiv.offsetHeight;
 let anchoPorcentual = anchoDiv / 100;
 let altoPorcentual = altoDiv / 100;
 
-function iman() {
+function iman(cero, uno, dos, tres) {
   piezas.forEach((pieza) => {
     pieza.addEventListener("mouseup", () => {
       const posx = parseFloat(pieza.style.left);
       const posy = parseFloat(pieza.style.top);
       const coordenadaLeft = miDiv.offsetLeft;
       const coordenadaTop = miDiv.offsetTop;
-
-      letraA.style.left = coordenadaLeft + anchoPorcentual * 37;
-      letraA.style.top = coordenadaTop - altoPorcentual * 1.5;
 
       // Define las coordenadas específicas para cada pieza
       const coordenadas = {
@@ -95,7 +84,7 @@ function iman() {
           top: coordenadaTop - altoPorcentual * 8.3,
         },
         B: {
-          left: coordenadaLeft + anchoPorcentual * 37,
+          left: coordenadaLeft + anchoPorcentual * 37.1,
           top: coordenadaTop - altoPorcentual * 1.5,
         },
         C: {
@@ -103,7 +92,7 @@ function iman() {
           top: coordenadaTop + altoPorcentual * 31.8,
         },
         D: {
-          left: coordenadaLeft + anchoPorcentual * 31.5,
+          left: coordenadaLeft + anchoPorcentual * 31.4,
           top: coordenadaTop + altoPorcentual * 38.7,
         },
       };
@@ -123,16 +112,24 @@ function iman() {
           // Desactiva la capacidad de mover la pieza
           pieza.style.pointerEvents = "none";
 
+          if ((pieza.style.Events = "none")) {
+            winAudio.play();
+          }
+
           // Aplica una transición suave para el acomodamiento
           pieza.style.transition = "top 0.3s, left 0.3s";
           break; // Detiene el bucle una vez que se encuentra una coincidencia
         }
       }
+      coordenadasResize = coordenadas;
     });
   });
 }
 
-function acomodarPiezasFixed(coordenadaLeft, coordenadaTop) {
-  uno.style.left = coordenadaLeft + anchoPorcentual * 37;
-  uno.style.top = coordenadaTop - altoPorcentual * 1.5;
+let coordenadasResize = { A: null, B: null, C: null, D: null };
+
+window.onresize = resize;
+
+function resize() {
+  console.log(coordenadasResize);
 }

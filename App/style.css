@@ -8,7 +8,6 @@
 .piezasElefante {
   position: relative;
   cursor: pointer;
-  transition: transform 0.3s ease-in-out;
   width: 57.9vh;
   height: auto;
   object-fit: cover;
@@ -18,7 +17,7 @@
 .elephant-size{
   width: 80vh;
   height: auto;
-  filter: opacity(45%);
+  filter: opacity(50%);
   object-fit: cover;
 }
 
@@ -42,12 +41,6 @@ body, html {
   display: inline-flex;
 }
 
-/* .img-container img {
-  width: 100%;
-  height: auto;
-  display: block;
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-} */
 
 .cuadricula{
   width: 80vh;
@@ -66,4 +59,8 @@ body{
   justify-content: center;
   height: 100vh;
   align-items: center;
+}
+
+.navbar-size{
+  height: 7vh;
 }
