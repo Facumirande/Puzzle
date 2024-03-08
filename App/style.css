@@ -5,18 +5,18 @@
   height: 100vh;
 }
 
-.movil {
+.piezasElefante {
   position: relative;
   cursor: pointer;
   transition: transform 0.3s ease-in-out;
-  width: auto;
+  width: 57.9vh;
   height: auto;
   object-fit: cover;
   z-index: 1;
 }
 
 .elephant-size{
-  width: 40%;
+  width: 80vh;
   height: auto;
   filter: opacity(45%);
   object-fit: cover;
@@ -42,16 +42,19 @@ body, html {
   display: inline-flex;
 }
 
-.img-container img {
+/* .img-container img {
   width: 100%;
   height: auto;
-  /* display: block;
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); */
-}
+  display: block;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+} */
 
 .cuadricula{
+  width: 80vh;
+  height: auto;
   z-index: 3;
   position: absolute;
+  object-fit: cover;
 }
 
 body{

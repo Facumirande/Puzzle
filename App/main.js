@@ -1,4 +1,4 @@
-const piezas = document.querySelectorAll(".movil");
+const piezas = document.querySelectorAll(".piezasElefante");
 const origX = [200, 304, 446, 200];
 const origY = [100, 100, 233, 204];
 const winAudio = document.getElementById("win");
@@ -103,7 +103,7 @@ function iman() {
           top: coordenadaTop + altoPorcentual * 31.8,
         },
         D: {
-          left: coordenadaLeft + anchoPorcentual * 31.3,
+          left: coordenadaLeft + anchoPorcentual * 31.5,
           top: coordenadaTop + altoPorcentual * 38.7,
         },
       };
