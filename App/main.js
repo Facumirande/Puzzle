@@ -220,35 +220,16 @@ function resize() {
     elementoLetraB.style.top = `${coordenadaTop - (altoDiv / 100) * 1.5}px`;
   }
   if (piezaCOK) {
-    elementoLetraC.style.left = `${coordenadaLeft - (anchoDiv / 100) * 8.5}px`;
-    elementoLetraC.style.top = `${coordenadaTop - (altoDiv / 100) * 100}px`;
+    elementoLetraC.style.left = `${coordenadaLeft - (anchoDiv / 100) * 8.4}px`;
+    elementoLetraC.style.top = `${coordenadaTop - (altoDiv / 100) * -31.7}px`;
   }
   if (piezaDOK) {
     elementoLetraD.style.left = `${
       coordenadaLeft - (anchoDiv / 100) * -31.5
     }px`;
-    elementoLetraD.style.top = `${coordenadaTop - (altoDiv / 100) * 38.7}px`;
+    elementoLetraD.style.top = `${coordenadaTop - (altoDiv / 100) * -38.5}px`;
   }
 }
-
-// const coordenadas = {
-//   A: {
-//     left: coordenadaLeft - anchoPorcentual * 4.5,
-//     top: coordenadaTop - altoPorcentual * 8.3,
-//   },
-//   B: {
-//     left: coordenadaLeft + anchoPorcentual * 37.1,
-//     top: coordenadaTop - altoPorcentual * 1.5,
-//   },
-//   C: {
-//     left: coordenadaLeft - anchoPorcentual * 8.5,
-//     top: coordenadaTop + altoPorcentual * 31.8,
-//   },
-//   D: {
-//     left: coordenadaLeft + anchoPorcentual * 31.4,
-//     top: coordenadaTop + altoPorcentual * 38.7,
-//   },
-// };
 
 function testing() {
   // Obtén la referencia al elemento del switch
