@@ -6,7 +6,7 @@
 }
 
 .piezasElefante {
-  position: relative;
+  position: absolute;
   cursor: pointer;
   width: 57.9vh;
   height: auto;
@@ -63,4 +63,10 @@ body{
 
 .navbar-size{
   height: 7vh;
+}
+
+.sound-switch{
+  display:flex;
+  justify-content: end;
+  align-items:end
 }
