@@ -2,7 +2,6 @@ const piezas = document.querySelectorAll(".piezasElefante");
 const origX = [200, 304, 446, 200];
 const origY = [100, 100, 233, 204];
 const winAudio = document.getElementById("win");
-const marcoMadera = document.getElementById("marcoMadera");
 
 let letraA = false;
 let letraB = false;
@@ -104,30 +103,31 @@ function iman() {
     pieza.addEventListener("mouseup", () => {
       const posx = parseFloat(pieza.style.left);
       const posy = parseFloat(pieza.style.top);
-      let coordenadas = 0;
+      let coordenadas = 0
 
       // Define las coordenadas específicas para cada pieza
-      if (coordenadasVariables == 0) {
-        coordenadas = {
-          A: {
-            left: coordenadaLeft - anchoPorcentual * 4.4,
-            top: coordenadaTop - altoPorcentual * 8.2,
-          },
-          B: {
-            left: coordenadaLeft + anchoPorcentual * 37.1,
-            top: coordenadaTop - altoPorcentual * 1.5,
-          },
-          C: {
-            left: coordenadaLeft - anchoPorcentual * 8.5,
-            top: coordenadaTop + altoPorcentual * 31.8,
-          },
-          D: {
-            left: coordenadaLeft + anchoPorcentual * 31.4,
-            top: coordenadaTop + altoPorcentual * 38.7,
-          },
-        };
-      } else {
-        coordenadas = coordenadasVariables;
+      if (coordenadasVariables == 0){
+           coordenadas = {
+        A: {
+          left: coordenadaLeft - anchoPorcentual * 4.4,
+          top: coordenadaTop - altoPorcentual * 8.2,
+        },
+        B: {
+          left: coordenadaLeft + anchoPorcentual * 37.1,
+          top: coordenadaTop - altoPorcentual * 1.5,
+        },
+        C: {
+          left: coordenadaLeft - anchoPorcentual * 8.5,
+          top: coordenadaTop + altoPorcentual * 31.8,
+        },
+        D: {
+          left: coordenadaLeft + anchoPorcentual * 31.4,
+          top: coordenadaTop + altoPorcentual * 38.7,
+        },
+       }
+      }
+      else{
+        coordenadas = coordenadasVariables
       }
 
       // Aumenta la distancia de detección a 30 píxeles
@@ -212,9 +212,6 @@ function iman() {
 let coordenadaLeft = miDiv.offsetLeft;
 let coordenadaTop = miDiv.offsetTop;
 
-marcoMadera.style.left = `${coordenadaLeft - anchoPorcentual * 12}px`;
-marcoMadera.style.top = `${coordenadaTop - altoPorcentual * 11}px`;
-
 window.onresize = resize;
 
 function resize() {
@@ -236,9 +233,7 @@ function resize() {
     elementoLetraC.style.top = `${coordenadaTop - (altoDiv / 100) * -31.7}px`;
   }
   if (piezaDOK) {
-    elementoLetraD.style.left = `${
-      coordenadaLeft - (anchoDiv / 100) * -31.3
-    }px`;
+    elementoLetraD.style.left = `${coordenadaLeft - (anchoDiv / 100) * -31.3}px`;
     elementoLetraD.style.top = `${coordenadaTop - (altoDiv / 100) * -38.6}px`;
   }
 
