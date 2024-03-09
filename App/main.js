@@ -18,6 +18,8 @@ let elementoLetraB = document.getElementById("letraB");
 let elementoLetraC = document.getElementById("letraC");
 let elementoLetraD = document.getElementById("letraD");
 
+let coordenadasVariables = 0;
+
 piezas.forEach((pieza, index) => {
   const tamWidth = [134, 192, 134, 163];
   const tamHeight = [163, 134, 163, 134];
@@ -25,8 +27,6 @@ piezas.forEach((pieza, index) => {
   pieza.width = `${tamWidth[index]}px`;
   pieza.height = `${tamHeight[index]}px`;
   pieza.style.position = "absolute";
-  // pieza.style.left = `${Math.floor(Math.random() * 50 + 850)}px`;
-  // pieza.style.top = `${Math.floor(Math.random() * 50 + 350)}px`;
   pieza.style.left = `${Math.floor(Math.random() * 50 + 850)}px`;
   pieza.style.top = `${Math.floor(Math.random() * 50 + 350)}px`;
 
@@ -103,9 +103,11 @@ function iman() {
     pieza.addEventListener("mouseup", () => {
       const posx = parseFloat(pieza.style.left);
       const posy = parseFloat(pieza.style.top);
+      let coordenadas = 0
 
       // Define las coordenadas específicas para cada pieza
-      const coordenadas = {
+      if (coordenadasVariables == 0){
+           coordenadas = {
         A: {
           left: coordenadaLeft - anchoPorcentual * 4.4,
           top: coordenadaTop - altoPorcentual * 8.2,
@@ -122,7 +124,12 @@ function iman() {
           left: coordenadaLeft + anchoPorcentual * 31.4,
           top: coordenadaTop + altoPorcentual * 38.7,
         },
-      };
+       }
+      }
+      else{
+        coordenadas = coordenadasVariables
+      }
+
       // Aumenta la distancia de detección a 30 píxeles
       const distanciaDeteccion = 30;
 
@@ -205,6 +212,8 @@ function iman() {
 let coordenadaLeft = miDiv.offsetLeft;
 let coordenadaTop = miDiv.offsetTop;
 
+
+
 window.onresize = resize;
 
 function resize() {
@@ -226,11 +235,28 @@ function resize() {
     elementoLetraC.style.top = `${coordenadaTop - (altoDiv / 100) * -31.7}px`;
   }
   if (piezaDOK) {
-    elementoLetraD.style.left = `${
-      coordenadaLeft - (anchoDiv / 100) * -31.3
-    }px`;
+    elementoLetraD.style.left = `${coordenadaLeft - (anchoDiv / 100) * -31.3}px`;
     elementoLetraD.style.top = `${coordenadaTop - (altoDiv / 100) * -38.6}px`;
   }
+
+  coordenadasVariables = {
+    A: {
+      left: coordenadaLeft - (anchoDiv / 100) * 4.3,
+      top: coordenadaTop - (altoDiv / 100) * 8.1,
+    },
+    B: {
+      left: coordenadaLeft - (anchoDiv / 100) * -37,
+      top: coordenadaTop - (altoDiv / 100) * 1.5,
+    },
+    C: {
+      left: coordenadaLeft - (anchoDiv / 100) * 8.6,
+      top: coordenadaTop - (altoDiv / 100) * -31.7,
+    },
+    D: {
+      left: coordenadaLeft - (anchoDiv / 100) * -31.3,
+      top: coordenadaTop - (altoDiv / 100) * -38.6,
+    },
+  };
 }
 
 function testing() {
