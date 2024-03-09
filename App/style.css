@@ -17,7 +17,6 @@
 .elephant-size{
   width: 80vh;
   height: auto;
-  filter: opacity(50%);
   object-fit: cover;
 }
 
@@ -50,23 +49,38 @@ body, html {
   object-fit: cover;
 }
 
-body{
-  overflow: hidden;
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url('../img/gameBoard.jpg'); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; 
+  height: 100vh; 
+  overflow: hidden; 
 }
+
 
 .container-center{
   display: flex;
-  justify-content: center;
   height: 100vh;
   align-items: center;
+  margin-top: 2.4vh;
+  margin-left: 8vh;
+  
 }
 
 .navbar-size{
-  height: 7vh;
+  background-image: url('../img/navVarBoard.jpg'); 
+  background-size: cover; 
+  background-repeat: no-repeat; 
+  overflow: hidden; 
+  height: 5vh;
 }
 
 .sound-switch{
-  display:flex;
-  justify-content: end;
-  align-items:end
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin: 1vh; 
 }

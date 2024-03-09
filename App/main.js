@@ -25,8 +25,10 @@ piezas.forEach((pieza, index) => {
   pieza.width = `${tamWidth[index]}px`;
   pieza.height = `${tamHeight[index]}px`;
   pieza.style.position = "absolute";
-  pieza.style.left = `${Math.floor(Math.random() * 10 + 1)}px`;
-  pieza.style.top = `${Math.floor(Math.random() * 409 + 1)}px`;
+  // pieza.style.left = `${Math.floor(Math.random() * 50 + 850)}px`;
+  // pieza.style.top = `${Math.floor(Math.random() * 50 + 350)}px`;
+  pieza.style.left = `${Math.floor(Math.random() * 50 + 850)}px`;
+  pieza.style.top = `${Math.floor(Math.random() * 50 + 350)}px`;
 
   pieza.addEventListener("mousedown", seleccionarElemento);
   pieza.addEventListener("dragstart", (e) => e.preventDefault()); // Evitar el arrastre por defecto
@@ -105,8 +107,8 @@ function iman() {
       // Define las coordenadas específicas para cada pieza
       const coordenadas = {
         A: {
-          left: coordenadaLeft - anchoPorcentual * 4.5,
-          top: coordenadaTop - altoPorcentual * 8.3,
+          left: coordenadaLeft - anchoPorcentual * 4.4,
+          top: coordenadaTop - altoPorcentual * 8.2,
         },
         B: {
           left: coordenadaLeft + anchoPorcentual * 37.1,
@@ -212,22 +214,22 @@ function resize() {
   coordenadaLeft = miDiv.offsetLeft;
   coordenadaTop = miDiv.offsetTop;
   if (piezaAOK) {
-    elementoLetraA.style.left = `${coordenadaLeft - (anchoDiv / 100) * 4.5}px`;
-    elementoLetraA.style.top = `${coordenadaTop - (altoDiv / 100) * 8.3}px`;
+    elementoLetraA.style.left = `${coordenadaLeft - (anchoDiv / 100) * 4.3}px`;
+    elementoLetraA.style.top = `${coordenadaTop - (altoDiv / 100) * 8.1}px`;
   }
   if (piezaBOK) {
     elementoLetraB.style.left = `${coordenadaLeft - (anchoDiv / 100) * -37}px`;
     elementoLetraB.style.top = `${coordenadaTop - (altoDiv / 100) * 1.5}px`;
   }
   if (piezaCOK) {
-    elementoLetraC.style.left = `${coordenadaLeft - (anchoDiv / 100) * 8.4}px`;
+    elementoLetraC.style.left = `${coordenadaLeft - (anchoDiv / 100) * 8.6}px`;
     elementoLetraC.style.top = `${coordenadaTop - (altoDiv / 100) * -31.7}px`;
   }
   if (piezaDOK) {
     elementoLetraD.style.left = `${
-      coordenadaLeft - (anchoDiv / 100) * -31.5
+      coordenadaLeft - (anchoDiv / 100) * -31.3
     }px`;
-    elementoLetraD.style.top = `${coordenadaTop - (altoDiv / 100) * -38.5}px`;
+    elementoLetraD.style.top = `${coordenadaTop - (altoDiv / 100) * -38.6}px`;
   }
 }
 
