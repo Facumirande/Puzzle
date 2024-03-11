@@ -111,20 +111,20 @@ function iman() {
       if (coordenadasVariables == 0) {
         coordenadas = {
           A: {
-            left: coordenadaLeft - anchoPorcentual * 5,
-            top: coordenadaTop - altoPorcentual * 8.2,
+            left: coordenadaLeft - anchoPorcentual * 4.8,
+            top: coordenadaTop - altoPorcentual * 8.5,
           },
           B: {
-            left: coordenadaLeft + anchoPorcentual * 36.9,
-            top: coordenadaTop - altoPorcentual * 1.5,
+            left: coordenadaLeft + anchoPorcentual * 36.6,
+            top: coordenadaTop - altoPorcentual * 1.8,
           },
           C: {
-            left: coordenadaLeft - anchoPorcentual * 9,
-            top: coordenadaTop + altoPorcentual * 31.7,
+            left: coordenadaLeft - anchoPorcentual * 9.2,
+            top: coordenadaTop + altoPorcentual * 31.4,
           },
           D: {
-            left: coordenadaLeft + anchoPorcentual * 31.2,
-            top: coordenadaTop + altoPorcentual * 39,
+            left: coordenadaLeft + anchoPorcentual * 30.8,
+            top: coordenadaTop + altoPorcentual * 38.6,
           },
         };
       } else {
@@ -224,43 +224,44 @@ function resize() {
   coordenadaLeft = miDiv.offsetLeft;
   coordenadaTop = miDiv.offsetTop;
   if (piezaAOK) {
-    elementoLetraA.style.left = `${coordenadaLeft - (anchoDiv / 100) * 4.3}px`;
-    elementoLetraA.style.top = `${coordenadaTop - (altoDiv / 100) * 8.1}px`;
+    elementoLetraA.style.left = `${coordenadaLeft - (anchoDiv / 100) * 5}px`;
+    elementoLetraA.style.top = `${coordenadaTop - (altoDiv / 100) * 9}px`;
   }
   if (piezaBOK) {
-    elementoLetraB.style.left = `${coordenadaLeft - (anchoDiv / 100) * -37}px`;
-    elementoLetraB.style.top = `${coordenadaTop - (altoDiv / 100) * 1.5}px`;
+    elementoLetraB.style.left = `${
+      coordenadaLeft - (anchoDiv / 100) * -36.4
+    }px`;
+    elementoLetraB.style.top = `${coordenadaTop - (altoDiv / 100) * 2}px`;
   }
   if (piezaCOK) {
-    elementoLetraC.style.left = `${coordenadaLeft - (anchoDiv / 100) * 8.6}px`;
-    elementoLetraC.style.top = `${coordenadaTop - (altoDiv / 100) * -31.7}px`;
+    elementoLetraC.style.left = `${coordenadaLeft - (anchoDiv / 100) * 9.2}px`;
+    elementoLetraC.style.top = `${coordenadaTop - (altoDiv / 100) * -31.5}px`;
   }
   if (piezaDOK) {
     elementoLetraD.style.left = `${
-      coordenadaLeft - (anchoDiv / 100) * -31.3
+      coordenadaLeft - (anchoDiv / 100) * -30.6
     }px`;
-    elementoLetraD.style.top = `${coordenadaTop - (altoDiv / 100) * -38.6}px`;
+    elementoLetraD.style.top = `${coordenadaTop - (altoDiv / 100) * -38.4}px`;
   }
 
   coordenadasVariables = {
     A: {
-      left: coordenadaLeft - (anchoDiv / 100) * 4.3,
-      top: coordenadaTop - (altoDiv / 100) * 8.1,
+      left: coordenadaLeft - (anchoDiv / 100) * 5,
+      top: coordenadaTop - (altoDiv / 100) * 8.5,
     },
     B: {
-      left: coordenadaLeft - (anchoDiv / 100) * -37,
-      top: coordenadaTop - (altoDiv / 100) * 1.5,
+      left: coordenadaLeft - (anchoDiv / 100) * -36.5,
+      top: coordenadaTop - (altoDiv / 100) * 2,
     },
     C: {
-      left: coordenadaLeft - (anchoDiv / 100) * 8.6,
-      top: coordenadaTop - (altoDiv / 100) * -31.7,
+      left: coordenadaLeft - (anchoDiv / 100) * 9.2,
+      top: coordenadaTop - (altoDiv / 100) * -31.5,
     },
     D: {
-      left: coordenadaLeft - (anchoDiv / 100) * -60,
-      top: coordenadaTop - (altoDiv / 100) * -31.7,
+      left: coordenadaLeft - (anchoDiv / 100) * -30.9,
+      top: coordenadaTop - (altoDiv / 100) * -38.7,
     },
   };
-  console.log(coordenadasVariables);
 }
 
 function testing() {
