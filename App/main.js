@@ -256,7 +256,7 @@ function resize() {
       top: coordenadaTop - (altoDiv / 100) * -31.7,
     },
     D: {
-      left: coordenadaLeft - (anchoDiv / 100) * 8.6,
+      left: coordenadaLeft - (anchoDiv / 100) * -60,
       top: coordenadaTop - (altoDiv / 100) * -31.7,
     },
   };
