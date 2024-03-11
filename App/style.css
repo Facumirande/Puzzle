@@ -17,7 +17,7 @@
 .elephant-size{
   width: 80vh;
   height: auto;
-  object-fit: cover;
+  /* object-fit: cover; */
 }
 
 
@@ -38,15 +38,20 @@ body, html {
 
 .img-container {
   display: inline-flex;
+  margin-left: 9vh;
+  margin-top: 5vh;
 }
 
 
 .cuadricula{
-  width: 80vh;
+  width: 97.4vh;
   height: auto;
   z-index: 3;
   position: absolute;
   object-fit: cover;
+  left: 0vh;
+  top: 3.5vh;
+  /* opacity: 50%; */
 }
 
 body {
@@ -57,7 +62,7 @@ body {
   background-position: center;
   background-repeat: no-repeat; 
   height: 100vh; 
-  overflow: hidden; 
+  overflow: hidden;
 }
 
 
@@ -65,8 +70,6 @@ body {
   display: flex;
   height: 100vh;
   align-items: center;
-  margin-top: 2.4vh;
-  margin-left: 8vh;
   
 }
 

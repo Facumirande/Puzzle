@@ -2,6 +2,7 @@ const piezas = document.querySelectorAll(".piezasElefante");
 const origX = [200, 304, 446, 200];
 const origY = [100, 100, 233, 204];
 const winAudio = document.getElementById("win");
+let marcoMadera = document.getElementById("marcoMadera");
 
 let letraA = false;
 let letraB = false;
@@ -19,6 +20,7 @@ let elementoLetraC = document.getElementById("letraC");
 let elementoLetraD = document.getElementById("letraD");
 
 let coordenadasVariables = 0;
+console.log(coordenadasVariables);
 
 piezas.forEach((pieza, index) => {
   const tamWidth = [134, 192, 134, 163];
@@ -103,31 +105,30 @@ function iman() {
     pieza.addEventListener("mouseup", () => {
       const posx = parseFloat(pieza.style.left);
       const posy = parseFloat(pieza.style.top);
-      let coordenadas = 0
+      let coordenadas = 0;
 
       // Define las coordenadas específicas para cada pieza
-      if (coordenadasVariables == 0){
-           coordenadas = {
-        A: {
-          left: coordenadaLeft - anchoPorcentual * 4.4,
-          top: coordenadaTop - altoPorcentual * 8.2,
-        },
-        B: {
-          left: coordenadaLeft + anchoPorcentual * 37.1,
-          top: coordenadaTop - altoPorcentual * 1.5,
-        },
-        C: {
-          left: coordenadaLeft - anchoPorcentual * 8.5,
-          top: coordenadaTop + altoPorcentual * 31.8,
-        },
-        D: {
-          left: coordenadaLeft + anchoPorcentual * 31.4,
-          top: coordenadaTop + altoPorcentual * 38.7,
-        },
-       }
-      }
-      else{
-        coordenadas = coordenadasVariables
+      if (coordenadasVariables == 0) {
+        coordenadas = {
+          A: {
+            left: coordenadaLeft - anchoPorcentual * 5,
+            top: coordenadaTop - altoPorcentual * 8.2,
+          },
+          B: {
+            left: coordenadaLeft + anchoPorcentual * 36.9,
+            top: coordenadaTop - altoPorcentual * 1.5,
+          },
+          C: {
+            left: coordenadaLeft - anchoPorcentual * 9,
+            top: coordenadaTop + altoPorcentual * 31.7,
+          },
+          D: {
+            left: coordenadaLeft + anchoPorcentual * 31.2,
+            top: coordenadaTop + altoPorcentual * 39,
+          },
+        };
+      } else {
+        coordenadas = coordenadasVariables;
       }
 
       // Aumenta la distancia de detección a 30 píxeles
@@ -212,6 +213,8 @@ function iman() {
 let coordenadaLeft = miDiv.offsetLeft;
 let coordenadaTop = miDiv.offsetTop;
 
+marcoMadera.style.left = coordenadaLeft;
+
 window.onresize = resize;
 
 function resize() {
@@ -233,7 +236,9 @@ function resize() {
     elementoLetraC.style.top = `${coordenadaTop - (altoDiv / 100) * -31.7}px`;
   }
   if (piezaDOK) {
-    elementoLetraD.style.left = `${coordenadaLeft - (anchoDiv / 100) * -31.3}px`;
+    elementoLetraD.style.left = `${
+      coordenadaLeft - (anchoDiv / 100) * -31.3
+    }px`;
     elementoLetraD.style.top = `${coordenadaTop - (altoDiv / 100) * -38.6}px`;
   }
 
@@ -251,10 +256,11 @@ function resize() {
       top: coordenadaTop - (altoDiv / 100) * -31.7,
     },
     D: {
-      left: coordenadaLeft - (anchoDiv / 100) * -31.3,
-      top: coordenadaTop - (altoDiv / 100) * -38.6,
+      left: coordenadaLeft - (anchoDiv / 100) * 8.6,
+      top: coordenadaTop - (altoDiv / 100) * -31.7,
     },
   };
+  console.log(coordenadasVariables);
 }
 
 function testing() {
