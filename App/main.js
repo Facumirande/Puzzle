@@ -3,6 +3,16 @@ const origX = [200, 304, 446, 200];
 const origY = [100, 100, 233, 204];
 const winAudio = document.getElementById("win");
 let marcoMadera = document.getElementById("marcoMadera");
+let miDiv = document.getElementById("mi-div");
+let anchoDiv = miDiv.offsetWidth;
+let altoDiv = miDiv.offsetHeight;
+let coordenadaLeft = miDiv.offsetLeft;
+let coordenadaTop = miDiv.offsetTop;
+let anchoPorcentual = anchoDiv / 100;
+let altoPorcentual = altoDiv / 100;
+
+let offsetLeft = coordenadaLeft + anchoPorcentual * 105;
+let offsetTop = coordenadaTop + altoPorcentual * 40;
 
 let letraA = false;
 let letraB = false;
@@ -29,8 +39,8 @@ piezas.forEach((pieza, index) => {
   pieza.width = `${tamWidth[index]}px`;
   pieza.height = `${tamHeight[index]}px`;
   pieza.style.position = "absolute";
-  pieza.style.left = `${Math.floor(Math.random() * 50 + 850)}px`;
-  pieza.style.top = `${Math.floor(Math.random() * 50 + 350)}px`;
+  pieza.style.left = `${offsetLeft}px`;
+  pieza.style.top = `${offsetTop}px`;
 
   pieza.addEventListener("mousedown", seleccionarElemento);
   pieza.addEventListener("dragstart", (e) => e.preventDefault()); // Evitar el arrastre por defecto
@@ -91,14 +101,6 @@ function soltarElemento() {
   elementSelect = null;
   testing();
 }
-
-let miDiv = document.getElementById("mi-div");
-
-let anchoDiv = miDiv.offsetWidth;
-let altoDiv = miDiv.offsetHeight;
-
-let anchoPorcentual = anchoDiv / 100;
-let altoPorcentual = altoDiv / 100;
 
 function iman() {
   piezas.forEach((pieza) => {
@@ -210,9 +212,6 @@ function iman() {
   });
 }
 
-let coordenadaLeft = miDiv.offsetLeft;
-let coordenadaTop = miDiv.offsetTop;
-
 marcoMadera.style.left = coordenadaLeft;
 
 window.onresize = resize;
@@ -226,22 +225,34 @@ function resize() {
   if (piezaAOK) {
     elementoLetraA.style.left = `${coordenadaLeft - (anchoDiv / 100) * 5}px`;
     elementoLetraA.style.top = `${coordenadaTop - (altoDiv / 100) * 9}px`;
+  } else {
+    elementoLetraA.style.left = `${coordenadaLeft + (anchoDiv / 100) * 105}px`;
+    elementoLetraA.style.top = `${coordenadaTop + (altoDiv / 100) * 40}px`;
   }
   if (piezaBOK) {
     elementoLetraB.style.left = `${
       coordenadaLeft - (anchoDiv / 100) * -36.4
     }px`;
     elementoLetraB.style.top = `${coordenadaTop - (altoDiv / 100) * 2}px`;
+  } else {
+    elementoLetraB.style.left = `${coordenadaLeft + (anchoDiv / 100) * 105}px`;
+    elementoLetraB.style.top = `${coordenadaTop + (altoDiv / 100) * 40}px`;
   }
   if (piezaCOK) {
     elementoLetraC.style.left = `${coordenadaLeft - (anchoDiv / 100) * 9.2}px`;
     elementoLetraC.style.top = `${coordenadaTop - (altoDiv / 100) * -31.5}px`;
+  } else {
+    elementoLetraC.style.left = `${coordenadaLeft + (anchoDiv / 100) * 105}px`;
+    elementoLetraC.style.top = `${coordenadaTop + (altoDiv / 100) * 40}px`;
   }
   if (piezaDOK) {
     elementoLetraD.style.left = `${
       coordenadaLeft - (anchoDiv / 100) * -30.6
     }px`;
     elementoLetraD.style.top = `${coordenadaTop - (altoDiv / 100) * -38.4}px`;
+  } else {
+    elementoLetraD.style.left = `${coordenadaLeft + (anchoDiv / 100) * 105}px`;
+    elementoLetraD.style.top = `${coordenadaTop + (altoDiv / 100) * 40}px`;
   }
 
   coordenadasVariables = {
