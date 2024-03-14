@@ -10,6 +10,7 @@ let coordenadaLeft = miDiv.offsetLeft;
 let coordenadaTop = miDiv.offsetTop;
 let anchoPorcentual = anchoDiv / 100;
 let altoPorcentual = altoDiv / 100;
+let piecesBoard = document.getElementById("piecesBoard");
 
 let offsetLeft = coordenadaLeft + anchoPorcentual * 105;
 let offsetTop = coordenadaTop + altoPorcentual * 40;
@@ -29,8 +30,19 @@ let elementoLetraB = document.getElementById("letraB");
 let elementoLetraC = document.getElementById("letraC");
 let elementoLetraD = document.getElementById("letraD");
 
+piecesBoard.style.left = `${coordenadaLeft + anchoPorcentual * 110}px`;
+piecesBoard.style.top = `${coordenadaLeft + anchoPorcentual * 39}px`;
+
+elementoLetraA.style.left = `${coordenadaLeft + anchoPorcentual * 112}px`;
+elementoLetraA.style.top = `${coordenadaTop + altoPorcentual * 45}px`;
+elementoLetraB.style.left = `${coordenadaLeft + anchoPorcentual * 107}px`;
+elementoLetraB.style.top = `${coordenadaTop + altoPorcentual * 36}px`;
+elementoLetraC.style.left = `${coordenadaLeft + anchoPorcentual * 107}px`;
+elementoLetraC.style.top = `${coordenadaTop + altoPorcentual * 35}px`;
+elementoLetraD.style.left = `${coordenadaLeft + anchoPorcentual * 110}px`;
+elementoLetraD.style.top = `${coordenadaTop + altoPorcentual * 40}px`;
+
 let coordenadasVariables = 0;
-console.log(coordenadasVariables);
 
 piezas.forEach((pieza, index) => {
   const tamWidth = [134, 192, 134, 163];
@@ -39,8 +51,6 @@ piezas.forEach((pieza, index) => {
   pieza.width = `${tamWidth[index]}px`;
   pieza.height = `${tamHeight[index]}px`;
   pieza.style.position = "absolute";
-  pieza.style.left = `${offsetLeft}px`;
-  pieza.style.top = `${offsetTop}px`;
 
   pieza.addEventListener("mousedown", seleccionarElemento);
   pieza.addEventListener("dragstart", (e) => e.preventDefault()); // Evitar el arrastre por defecto
@@ -226,7 +236,7 @@ function resize() {
     elementoLetraA.style.left = `${coordenadaLeft - (anchoDiv / 100) * 5}px`;
     elementoLetraA.style.top = `${coordenadaTop - (altoDiv / 100) * 9}px`;
   } else {
-    elementoLetraA.style.left = `${coordenadaLeft + (anchoDiv / 100) * 105}px`;
+    elementoLetraA.style.left = `${coordenadaLeft + (anchoDiv / 100) * 110}px`;
     elementoLetraA.style.top = `${coordenadaTop + (altoDiv / 100) * 40}px`;
   }
   if (piezaBOK) {
@@ -235,15 +245,15 @@ function resize() {
     }px`;
     elementoLetraB.style.top = `${coordenadaTop - (altoDiv / 100) * 2}px`;
   } else {
-    elementoLetraB.style.left = `${coordenadaLeft + (anchoDiv / 100) * 105}px`;
-    elementoLetraB.style.top = `${coordenadaTop + (altoDiv / 100) * 40}px`;
+    elementoLetraB.style.left = `${coordenadaLeft + (anchoDiv / 100) * 110}px`;
+    elementoLetraB.style.top = `${coordenadaTop + (altoDiv / 100) * 36}px`;
   }
   if (piezaCOK) {
     elementoLetraC.style.left = `${coordenadaLeft - (anchoDiv / 100) * 9.2}px`;
     elementoLetraC.style.top = `${coordenadaTop - (altoDiv / 100) * -31.5}px`;
   } else {
-    elementoLetraC.style.left = `${coordenadaLeft + (anchoDiv / 100) * 105}px`;
-    elementoLetraC.style.top = `${coordenadaTop + (altoDiv / 100) * 40}px`;
+    elementoLetraC.style.left = `${coordenadaLeft + (anchoDiv / 100) * 111}px`;
+    elementoLetraC.style.top = `${coordenadaTop + (altoDiv / 100) * 35}px`;
   }
   if (piezaDOK) {
     elementoLetraD.style.left = `${
@@ -251,8 +261,8 @@ function resize() {
     }px`;
     elementoLetraD.style.top = `${coordenadaTop - (altoDiv / 100) * -38.4}px`;
   } else {
-    elementoLetraD.style.left = `${coordenadaLeft + (anchoDiv / 100) * 105}px`;
-    elementoLetraD.style.top = `${coordenadaTop + (altoDiv / 100) * 40}px`;
+    elementoLetraD.style.left = `${coordenadaLeft + (anchoDiv / 100) * 110}px`;
+    elementoLetraD.style.top = `${coordenadaTop + (altoDiv / 100) * 35}px`;
   }
 
   coordenadasVariables = {
@@ -273,6 +283,9 @@ function resize() {
       top: coordenadaTop - (altoDiv / 100) * -38.7,
     },
   };
+
+  piecesBoard.style.left = `${coordenadaLeft + (anchoDiv / 100) * 110}px`;
+  piecesBoard.style.top = `${coordenadaLeft + (altoDiv / 100) * 39}px`;
 }
 
 function testing() {

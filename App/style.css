@@ -83,7 +83,16 @@ body {
 
 .sound-switch{
   position: fixed;
+  position: absolute;
   bottom: 0;
   right: 0;
   margin: 1vh; 
+  z-index:3
+}
+
+.piecesBoard{
+  width: 60vh;
+  height: 59.5vh;
+  position: absolute;
+  z-index: -3;
 }
