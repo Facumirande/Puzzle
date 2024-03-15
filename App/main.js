@@ -1,4 +1,4 @@
-const piezas = document.querySelectorAll(".piezasElefante");
+const piezas = document.querySelectorAll(".PiezasJuego");
 const origX = [200, 304, 446, 200];
 const origY = [100, 100, 233, 204];
 const winAudio = document.getElementById("win");
@@ -11,6 +11,11 @@ let coordenadaTop = miDiv.offsetTop;
 let anchoPorcentual = anchoDiv / 100;
 let altoPorcentual = altoDiv / 100;
 let piecesBoard = document.getElementById("piecesBoard");
+let crayon = document.getElementById("crayon");
+let bodyWidth = document.body.offsetWidth;
+let bodyHeight = document.body.offsetHeight;
+let nivel = 1;
+let ubiacionPiezas = document.getElementById("pieces");
 
 let offsetLeft = coordenadaLeft + anchoPorcentual * 105;
 let offsetTop = coordenadaTop + altoPorcentual * 40;
@@ -32,6 +37,12 @@ let elementoLetraD = document.getElementById("letraD");
 
 piecesBoard.style.left = `${coordenadaLeft + anchoPorcentual * 110}px`;
 piecesBoard.style.top = `${coordenadaLeft + anchoPorcentual * 39}px`;
+
+crayon.style.left = `${coordenadaLeft + anchoPorcentual * 187}px`;
+crayon.style.top = `${coordenadaLeft + anchoPorcentual * 80}px`;
+
+// crayon.style.left = `${bodyWidth - (bodyWidth / 100) * 30}px`;
+// crayon.style.top = `${bodyHeight - (bodyHeight / 100) * 30}px`;
 
 elementoLetraA.style.left = `${coordenadaLeft + anchoPorcentual * 112}px`;
 elementoLetraA.style.top = `${coordenadaTop + altoPorcentual * 45}px`;
@@ -158,7 +169,6 @@ function iman() {
 
         // Desactiva la capacidad de mover la pieza
         pieza.style.pointerEvents = "none";
-
         piezaAOK = true;
 
         // Aplica una transición suave para el acomodamiento
@@ -176,7 +186,6 @@ function iman() {
 
         // Desactiva la capacidad de mover la pieza
         pieza.style.pointerEvents = "none";
-
         piezaBOK = true;
 
         // Aplica una transición suave para el acomodamiento
@@ -194,7 +203,6 @@ function iman() {
 
         // Desactiva la capacidad de mover la pieza
         pieza.style.pointerEvents = "none";
-
         piezaCOK = true;
 
         // Aplica una transición suave para el acomodamiento
@@ -212,11 +220,11 @@ function iman() {
 
         // Desactiva la capacidad de mover la pieza
         pieza.style.pointerEvents = "none";
-
         piezaDOK = true;
 
         // Aplica una transición suave para el acomodamiento
         pieza.style.transition = "top 0.3s, left 0.3s";
+        pieza.style.transition = "none";
       }
     });
   });
@@ -232,6 +240,9 @@ function resize() {
   altoDiv = miDiv.offsetHeight;
   coordenadaLeft = miDiv.offsetLeft;
   coordenadaTop = miDiv.offsetTop;
+  bodyWidth = document.body.offsetWidth;
+  bodyHeight = document.body.offsetHeight;
+
   if (piezaAOK) {
     elementoLetraA.style.left = `${coordenadaLeft - (anchoDiv / 100) * 5}px`;
     elementoLetraA.style.top = `${coordenadaTop - (altoDiv / 100) * 9}px`;
@@ -286,14 +297,68 @@ function resize() {
 
   piecesBoard.style.left = `${coordenadaLeft + (anchoDiv / 100) * 110}px`;
   piecesBoard.style.top = `${coordenadaLeft + (altoDiv / 100) * 39}px`;
+
+  crayon.style.left = `${coordenadaLeft + (anchoDiv / 100) * 187}px`;
+  crayon.style.top = `${coordenadaLeft + (anchoDiv / 100) * 80}px`;
 }
 
 function testing() {
   // Obtén la referencia al elemento del switch
   const switchElement = document.getElementById("Activar");
-
   // Verifica si el switch está activado
-  if (switchElement.checked && piezaAOK && piezaBOK && piezaCOK && piezaDOK) {
-    winAudio.play();
+  if (piezaAOK && piezaBOK && piezaCOK && piezaDOK) {
+    nivel = nivel + 1;
+    Swal.fire({
+      title: `¡Felicidades, avanzaste al nivel ${nivel}!`,
+      width: 540,
+      color: "rgb(0, 0, 0)",
+      background: "#fff",
+      backdrop: `
+        rgba(0, 0, 0, 0.421)
+        url("../img/confetti.gif")
+        center top
+        no-repeat
+      `,
+    });
+    if (switchElement.checked) {
+      winAudio.play();
+    }
+    // while (ubiacionPiezas.firstChild) {
+    //   ubiacionPiezas.removeChild(ubiacionPiezas.firstChild);
+    // }
+    if (nivel == 2) {
+      // let primera = document.createElement("img");
+      // primera.id = "letraA";
+      // primera.className = "PiezasJuego";
+      // primera.src = "../img/Jirafa/A.png";
+      // primera.alt = "pieza-a";
+      // primera.style.left = ubiacionPiezas.appendChild(primera);
+      // let segunda = document.createElement("img");
+      // segunda.id = "letraB";
+      // segunda.className = "PiezasJuego";
+      // segunda.src = "../img/Jirafa/B.png";
+      // segunda.alt = "pieza-b";
+      // ubiacionPiezas.appendChild(segunda);
+      // let tercera = document.createElement("img");
+      // tercera.id = "letraC";
+      // tercera.className = "PiezasJuego";
+      // tercera.src = "../img/Jirafa/C.png";
+      // tercera.alt = "pieza-c";
+      // ubiacionPiezas.appendChild(tercera);
+      // let cuarta = document.createElement("img");
+      // cuarta.id = "letraD";
+      // cuarta.className = "PiezasJuego";
+      // cuarta.src = "../img/Jirafa/D.png";
+      // cuarta.alt = "pieza-d";
+      // ubiacionPiezas.appendChild(cuarta);
+      primera.style.left = `${coordenadaLeft + (anchoDiv / 100) * 110}px`;
+      primera.style.top = `${coordenadaTop + (altoDiv / 100) * 40}px`;
+      segunda.style.left = `${coordenadaLeft + (anchoDiv / 100) * 110}px`;
+      segunda.style.top = `${coordenadaTop + (altoDiv / 100) * 36}px`;
+      tercera.style.left = `${coordenadaLeft + (anchoDiv / 100) * 106}px`;
+      tercera.style.top = `${coordenadaTop + (altoDiv / 100) * 36}px`;
+      cuarta.style.left = `${coordenadaLeft + (anchoDiv / 100) * 110}px`;
+      cuarta.style.top = `${coordenadaTop + (altoDiv / 100) * 35}px`;
+    }
   }
 }

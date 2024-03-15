@@ -78,37 +78,45 @@
       <section id="pieces">
         <img
           id="letraA"
-          class="piezasElefante"
+          class="PiezasJuego"
           src="../img/Elefante/A.png"
-          alt="elephant-a"
+          alt="pieza-a"
         />
         <img
           id="letraB"
-          class="piezasElefante"
+          class="PiezasJuego"
           src="../img/Elefante/B.png"
-          alt="elephant-b"
+          alt="pieza-b"
         />
         <img
           id="letraC"
-          class="piezasElefante"
+          class="PiezasJuego"
           src="../img/Elefante/C.png"
-          alt="elephant-c"
+          alt="pieza-c"
         />
         <img
           id="letraD"
-          class="piezasElefante"
+          class="PiezasJuego"
           src="../img/Elefante/D.png"
-          alt="elephant-d"
+          alt="pieza-d"
         />
       </section>
     </section>
     <section>
-      <img class="piecesBoard" id="piecesBoard" src="../img/PiecesBoard.png" alt="Tablero">
+      <img
+        class="piecesBoard"
+        id="piecesBoard"
+        src="../img/PiecesBoard.png"
+        alt="Tablero"
+      />
+    </section>
+    <section>
+      <img class="crayon" id="crayon" src="../img/crayon.png" alt="crayon" />
     </section>
     <section class="sound-switch me-3">
       <div class="form-check form-switch">
         <label class="form-check-label text-light" for="flexSwitchCheckChecked"
-        >Activar/Desactivar Sonido de victoria</label
+          >Activar/Desactivar Sonido de victoria</label
         >
         <input
           class="form-check-input d-flex"
@@ -120,6 +128,7 @@
       </div>
     </section>
     <audio id="win" src="../sound/Elephant.mp3"></audio>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="module" src="main.js"></script>
   </body>
 </html>

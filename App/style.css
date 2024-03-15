@@ -5,7 +5,7 @@
   height: 100vh;
 }
 
-.piezasElefante {
+.PiezasJuego {
   position: absolute;
   cursor: pointer;
   width: 57.9vh;
@@ -46,12 +46,12 @@ body, html {
 .cuadricula{
   width: 96.8vh;
   height: auto;
-  z-index: 3;
+  z-index: 1;
   position: absolute;
   object-fit: cover;
   left: 0vh;
   top: 3.5vh;
-  /* opacity: 50%; */
+  pointer-events: none;
 }
 
 body {
@@ -95,4 +95,12 @@ body {
   height: 59.5vh;
   position: absolute;
   z-index: -3;
+}
+
+.crayon{
+  position: absolute;
+  width: 50vh;
+  height: auto;
+  color: rgb(0, 0, 0);
+  pointer-events: none;
 }
