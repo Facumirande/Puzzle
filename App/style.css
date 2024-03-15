@@ -11,7 +11,7 @@
   width: 57.9vh;
   height: auto;
   object-fit: cover;
-  z-index: 1;
+  z-index: 3;
 }
 
 .elephant-size{
@@ -103,4 +103,5 @@ body {
   height: auto;
   color: rgb(0, 0, 0);
   pointer-events: none;
+  z-index: -3;
 }

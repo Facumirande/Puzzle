@@ -16,6 +16,7 @@ let bodyWidth = document.body.offsetWidth;
 let bodyHeight = document.body.offsetHeight;
 let nivel = 1;
 let ubiacionPiezas = document.getElementById("pieces");
+let nextButton = document.getElementById("nextButton")
 
 let offsetLeft = coordenadaLeft + anchoPorcentual * 105;
 let offsetTop = coordenadaTop + altoPorcentual * 40;
@@ -34,6 +35,9 @@ let elementoLetraA = document.getElementById("letraA");
 let elementoLetraB = document.getElementById("letraB");
 let elementoLetraC = document.getElementById("letraC");
 let elementoLetraD = document.getElementById("letraD");
+
+nextButton.style.left = `${coordenadaLeft + anchoPorcentual * 110}px`
+nextButton.style.top = `${coordenadaTop + anchoPorcentual * 40}px`
 
 piecesBoard.style.left = `${coordenadaLeft + anchoPorcentual * 110}px`;
 piecesBoard.style.top = `${coordenadaLeft + anchoPorcentual * 39}px`;
@@ -116,7 +120,6 @@ function moverElemento(evt) {
 }
 
 function soltarElemento() {
-  elementSelect.style.zIndex = "0";
   document.removeEventListener("mousemove", moverElemento);
   document.removeEventListener("mouseup", soltarElemento);
   elementSelect = null;
@@ -170,6 +173,7 @@ function iman() {
         // Desactiva la capacidad de mover la pieza
         pieza.style.pointerEvents = "none";
         piezaAOK = true;
+        pieza.style.zIndex = "0";
 
         // Aplica una transición suave para el acomodamiento
         pieza.style.transition = "top 0.3s, left 0.3s";
@@ -187,6 +191,7 @@ function iman() {
         // Desactiva la capacidad de mover la pieza
         pieza.style.pointerEvents = "none";
         piezaBOK = true;
+        pieza.style.zIndex = "0";
 
         // Aplica una transición suave para el acomodamiento
         pieza.style.transition = "top 0.3s, left 0.3s";
@@ -204,6 +209,7 @@ function iman() {
         // Desactiva la capacidad de mover la pieza
         pieza.style.pointerEvents = "none";
         piezaCOK = true;
+        pieza.style.zIndex = "0";
 
         // Aplica una transición suave para el acomodamiento
         pieza.style.transition = "top 0.3s, left 0.3s";
@@ -221,10 +227,10 @@ function iman() {
         // Desactiva la capacidad de mover la pieza
         pieza.style.pointerEvents = "none";
         piezaDOK = true;
+        pieza.style.zIndex = "0";
 
         // Aplica una transición suave para el acomodamiento
         pieza.style.transition = "top 0.3s, left 0.3s";
-        pieza.style.transition = "none";
       }
     });
   });
@@ -323,42 +329,44 @@ function testing() {
     if (switchElement.checked) {
       winAudio.play();
     }
-    // while (ubiacionPiezas.firstChild) {
-    //   ubiacionPiezas.removeChild(ubiacionPiezas.firstChild);
-    // }
+    if (nivel == 2){
+
+    }
+    let primera = document.getElementById("letraA");
+    primera.style.pointerEvents = "auto";
+    primera.style.transition = "none";
+    piezaAOK = false;
+    let segunda = document.getElementById("letraB");
+    segunda.style.pointerEvents = "auto";
+    segunda.style.transition = "none";
+    piezaBOK = false;
+    let tercera = document.getElementById("letraC");
+    tercera.style.pointerEvents = "auto";
+    tercera.style.transition = "none";
+    piezaCOK = false;
+    let cuarta = document.getElementById("letraD");
+    cuarta.style.pointerEvents = "auto";
+    cuarta.style.transition = "none";
+    piezaDOK = false;
+    primera.style.left = `${coordenadaLeft + (anchoDiv / 100) * 110}px`;
+    primera.style.top = `${coordenadaTop + (altoDiv / 100) * 40}px`;
+    segunda.style.left = `${coordenadaLeft + (anchoDiv / 100) * 110}px`;
+    segunda.style.top = `${coordenadaTop + (altoDiv / 100) * 36}px`;
+    tercera.style.left = `${coordenadaLeft + (anchoDiv / 100) * 106}px`;
+    tercera.style.top = `${coordenadaTop + (altoDiv / 100) * 36}px`;
+    cuarta.style.left = `${coordenadaLeft + (anchoDiv / 100) * 110}px`;
+    cuarta.style.top = `${coordenadaTop + (altoDiv / 100) * 35}px`;
     if (nivel == 2) {
-      // let primera = document.createElement("img");
-      // primera.id = "letraA";
-      // primera.className = "PiezasJuego";
-      // primera.src = "../img/Jirafa/A.png";
-      // primera.alt = "pieza-a";
-      // primera.style.left = ubiacionPiezas.appendChild(primera);
-      // let segunda = document.createElement("img");
-      // segunda.id = "letraB";
-      // segunda.className = "PiezasJuego";
-      // segunda.src = "../img/Jirafa/B.png";
-      // segunda.alt = "pieza-b";
-      // ubiacionPiezas.appendChild(segunda);
-      // let tercera = document.createElement("img");
-      // tercera.id = "letraC";
-      // tercera.className = "PiezasJuego";
-      // tercera.src = "../img/Jirafa/C.png";
-      // tercera.alt = "pieza-c";
-      // ubiacionPiezas.appendChild(tercera);
-      // let cuarta = document.createElement("img");
-      // cuarta.id = "letraD";
-      // cuarta.className = "PiezasJuego";
-      // cuarta.src = "../img/Jirafa/D.png";
-      // cuarta.alt = "pieza-d";
-      // ubiacionPiezas.appendChild(cuarta);
-      primera.style.left = `${coordenadaLeft + (anchoDiv / 100) * 110}px`;
-      primera.style.top = `${coordenadaTop + (altoDiv / 100) * 40}px`;
-      segunda.style.left = `${coordenadaLeft + (anchoDiv / 100) * 110}px`;
-      segunda.style.top = `${coordenadaTop + (altoDiv / 100) * 36}px`;
-      tercera.style.left = `${coordenadaLeft + (anchoDiv / 100) * 106}px`;
-      tercera.style.top = `${coordenadaTop + (altoDiv / 100) * 36}px`;
-      cuarta.style.left = `${coordenadaLeft + (anchoDiv / 100) * 110}px`;
-      cuarta.style.top = `${coordenadaTop + (altoDiv / 100) * 35}px`;
+      primera.src = "../img/Jirafa/A.png";
+      segunda.src = "../img/Jirafa/B.png";
+      tercera.src = "../img/Jirafa/C.png";
+      cuarta.src = "../img/Jirafa/D.png";
+    }
+    if (nivel == 3) {
+      primera.src = "../img/Elefante/A.png";
+      segunda.src = "../img/Elefante/B.png";
+      tercera.src = "../img/Elefante/C.png";
+      cuarta.src = "../img/Elefante/D.png";
     }
   }
 }
