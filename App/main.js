@@ -17,9 +17,9 @@ let bodyHeight = document.body.offsetHeight;
 let nivel = 1;
 let ubiacionPiezas = document.getElementById("pieces");
 let nextButton = document.getElementById("nextButton")
-
 let offsetLeft = coordenadaLeft + anchoPorcentual * 105;
 let offsetTop = coordenadaTop + altoPorcentual * 40;
+let puzzleImg = document.getElementById("puzzleImg")
 
 let letraA = false;
 let letraB = false;
@@ -36,17 +36,39 @@ let elementoLetraB = document.getElementById("letraB");
 let elementoLetraC = document.getElementById("letraC");
 let elementoLetraD = document.getElementById("letraD");
 
-nextButton.style.left = `${coordenadaLeft + anchoPorcentual * 110}px`
-nextButton.style.top = `${coordenadaTop + anchoPorcentual * 40}px`
+nextButton.style.left = `${coordenadaLeft + anchoPorcentual * 137}px`
+nextButton.style.top = `${coordenadaTop + anchoPorcentual * 30}px`
+prevButton.style.left = `${coordenadaLeft + anchoPorcentual * 117}px`
+prevButton.style.top = `${coordenadaTop + anchoPorcentual * 30}px`
+restartButton.style.left = `${coordenadaLeft + anchoPorcentual * 157}px`
+restartButton.style.top = `${coordenadaTop + anchoPorcentual * 30}px`
+restartButton.style.width = "7%"
+nextButton.style.width = "7%"
+prevButton.style.width = "7%"
+restartButton.style.height = "4%"
+nextButton.style.height = "4%"
+prevButton.style.height = "4%"
+restartButton.style.fontSize = "90%"
+nextButton.style.fontSize = "90%"
+prevButton.style.fontSize = "90%"
+restartButton.style.fontSize = "90%"
+nextButton.style.fontSize = "90%"
+prevButton.style.fontSize = "90%"
+prevButton.style.background = "url('../img/gameBoard.jpg')"; 
+nextButton.style.background = "url('../img/gameBoard.jpg')"; 
+restartButton.style.background = "url('../img/gameBoard.jpg')";
+prevButton.style.padding = "0"; 
+nextButton.style.padding = "0"; 
+restartButton.style.padding = "0"; 
+
+
+
 
 piecesBoard.style.left = `${coordenadaLeft + anchoPorcentual * 110}px`;
 piecesBoard.style.top = `${coordenadaLeft + anchoPorcentual * 39}px`;
 
 crayon.style.left = `${coordenadaLeft + anchoPorcentual * 187}px`;
 crayon.style.top = `${coordenadaLeft + anchoPorcentual * 80}px`;
-
-// crayon.style.left = `${bodyWidth - (bodyWidth / 100) * 30}px`;
-// crayon.style.top = `${bodyHeight - (bodyHeight / 100) * 30}px`;
 
 elementoLetraA.style.left = `${coordenadaLeft + anchoPorcentual * 112}px`;
 elementoLetraA.style.top = `${coordenadaTop + altoPorcentual * 45}px`;
@@ -59,55 +81,60 @@ elementoLetraD.style.top = `${coordenadaTop + altoPorcentual * 40}px`;
 
 let coordenadasVariables = 0;
 
+  function prev(){
+    nivel = nivel -1;
+    console.log("hola")
+  }
+
 piezas.forEach((pieza, index) => {
   const tamWidth = [134, 192, 134, 163];
   const tamHeight = [163, 134, 163, 134];
-
+  
   pieza.width = `${tamWidth[index]}px`;
   pieza.height = `${tamHeight[index]}px`;
   pieza.style.position = "absolute";
-
+  
   pieza.addEventListener("mousedown", seleccionarElemento);
   pieza.addEventListener("dragstart", (e) => e.preventDefault()); // Evitar el arrastre por defecto
-});
-
-let elementSelect = null;
-let offsetX = 0;
-let offsetY = 0;
-
-function seleccionarElemento(evt) {
-  elementSelect = evt.target;
-  if (elementSelect.id == "letraA") {
-    letraA = true;
-    letraB = false;
-    letraC = false;
-    letraD = false;
-  }
-  if (elementSelect.id == "letraB") {
-    letraA = false;
-    letraB = true;
-    letraC = false;
-    letraD = false;
-  }
-  if (elementSelect.id == "letraC") {
-    letraA = false;
-    letraB = false;
-    letraC = true;
-    letraD = false;
-  }
-  if (elementSelect.id == "letraD") {
-    letraA = false;
-    letraB = false;
-    letraC = false;
-    letraD = true;
-  }
-  offsetX = evt.clientX - parseFloat(elementSelect.style.left);
-  offsetY = evt.clientY - parseFloat(elementSelect.style.top);
-
-  elementSelect.style.zIndex = "1";
-  document.addEventListener("mousemove", moverElemento);
-  document.addEventListener("mouseup", soltarElemento);
-}
+  });
+  
+  let elementSelect = null;
+  let offsetX = 0;
+  let offsetY = 0;
+  
+  function seleccionarElemento(evt) {
+    elementSelect = evt.target;
+    if (elementSelect.id == "letraA") {
+      letraA = true;
+      letraB = false;
+      letraC = false;
+      letraD = false;
+      }
+      if (elementSelect.id == "letraB") {
+        letraA = false;
+        letraB = true;
+        letraC = false;
+        letraD = false;
+        }
+        if (elementSelect.id == "letraC") {
+          letraA = false;
+          letraB = false;
+          letraC = true;
+          letraD = false;
+          }
+          if (elementSelect.id == "letraD") {
+            letraA = false;
+            letraB = false;
+            letraC = false;
+            letraD = true;
+            }
+            offsetX = evt.clientX - parseFloat(elementSelect.style.left);
+            offsetY = evt.clientY - parseFloat(elementSelect.style.top);
+            
+            elementSelect.style.zIndex = elementSelect.style.zIndex + 5;
+            document.addEventListener("mousemove", moverElemento);
+            document.addEventListener("mouseup", soltarElemento);
+            }
 
 function moverElemento(evt) {
   const posX = evt.clientX - offsetX;
@@ -304,8 +331,14 @@ function resize() {
   piecesBoard.style.left = `${coordenadaLeft + (anchoDiv / 100) * 110}px`;
   piecesBoard.style.top = `${coordenadaLeft + (altoDiv / 100) * 39}px`;
 
-  crayon.style.left = `${coordenadaLeft + (anchoDiv / 100) * 187}px`;
-  crayon.style.top = `${coordenadaLeft + (anchoDiv / 100) * 80}px`;
+  crayon.style.left = `${coordenadaLeft + (anchoDiv / 100) * 180}px`;
+  crayon.style.top = `${coordenadaLeft + (altoDiv / 100) * 80}px`;
+  nextButton.style.left = `${coordenadaLeft + (anchoDiv / 100) * 138}px`
+  nextButton.style.top = `${coordenadaTop + (altoDiv / 100) * 30}px`
+  prevButton.style.left = `${coordenadaLeft + (anchoDiv / 100) * 118}px`
+  prevButton.style.top = `${coordenadaTop + (altoDiv / 100) * 30}px`
+  restartButton.style.left = `${coordenadaLeft + (anchoDiv / 100) * 158}px`
+  restartButton.style.top = `${coordenadaTop + (altoDiv / 100) * 30}px`
 }
 
 function testing() {
@@ -361,6 +394,7 @@ function testing() {
       segunda.src = "../img/Jirafa/B.png";
       tercera.src = "../img/Jirafa/C.png";
       cuarta.src = "../img/Jirafa/D.png";
+      puzzleImg.src = "../img/Jirafa.jpg";
     }
     if (nivel == 3) {
       primera.src = "../img/Elefante/A.png";

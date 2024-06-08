@@ -105,3 +105,7 @@ body {
   pointer-events: none;
   z-index: -3;
 }
+
+.btn-position{
+  position: absolute;
+}
