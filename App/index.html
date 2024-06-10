@@ -89,13 +89,15 @@
           checked
         />
       </div>
-    </section>
+      <h2 id="level-info">Nivel 1</h2>
+      </section>
+      <section>
+        <button id=prevButton class="btn btn-primary btn-position">Anterior</button>
+        <button id=nextButton onclick="next()" class="btn btn-primary btn-position">Siguiente</button>
+        <button id=restartButton onclick="restart()" class="btn btn-primary btn-position">Resetear</button>
+      </section>
     <audio id="win" src="../sound/Fireworks.mp3"></audio>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="module" src="main.js"></script>
-    
-    <button id=prevButton onclick="prev()" class="btn btn-primary btn-position">Anterior</button>
-    <button id=nextButton onclick="next()" class="btn btn-primary btn-position">Siguiente</button>
-    <button id=restartButton onclick="restart()" class="btn btn-primary btn-position">Resetear</button>
-  </body>
+    </body>
 </html>

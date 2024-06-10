@@ -20,6 +20,8 @@ let nextButton = document.getElementById("nextButton")
 let offsetLeft = coordenadaLeft + anchoPorcentual * 105;
 let offsetTop = coordenadaTop + altoPorcentual * 40;
 let puzzleImg = document.getElementById("puzzleImg")
+let prevButtonCheck = 0
+let levelInfo = document.getElementById("level-info")
 
 let letraA = false;
 let letraB = false;
@@ -59,7 +61,8 @@ nextButton.style.background = "url('../img/gameBoard.jpg')";
 restartButton.style.background = "url('../img/gameBoard.jpg')";
 prevButton.style.padding = "0"; 
 nextButton.style.padding = "0"; 
-restartButton.style.padding = "0"; 
+restartButton.style.padding = "0";
+prevButton.onclick = prev; 
 
 
 
@@ -81,10 +84,6 @@ elementoLetraD.style.top = `${coordenadaTop + altoPorcentual * 40}px`;
 
 let coordenadasVariables = 0;
 
-  function prev(){
-    nivel = nivel -1;
-    console.log("hola")
-  }
 
 piezas.forEach((pieza, index) => {
   const tamWidth = [134, 192, 134, 163];
@@ -102,6 +101,15 @@ piezas.forEach((pieza, index) => {
   let offsetX = 0;
   let offsetY = 0;
   
+
+  function prev(){
+    if (nivel>1) {
+      nivel = nivel -1;
+    }
+    prevButtonCheck = prevButtonCheck + 1;
+    testing();
+  }
+
   function seleccionarElemento(evt) {
     elementSelect = evt.target;
     if (elementSelect.id == "letraA") {
@@ -347,6 +355,13 @@ function testing() {
   // Verifica si el switch está activado
   if (piezaAOK && piezaBOK && piezaCOK && piezaDOK) {
     nivel = nivel + 1;
+    if (prevButtonCheck>0){
+      if(nivel != (1&2)){
+        nivel = nivel -1;
+      }
+      prevButtonCheck =  0;
+      testing();
+    }
     Swal.fire({
       title: `¡Felicidades, avanzaste al nivel ${nivel}!`,
       width: 540,
@@ -389,6 +404,14 @@ function testing() {
     tercera.style.top = `${coordenadaTop + (altoDiv / 100) * 36}px`;
     cuarta.style.left = `${coordenadaLeft + (anchoDiv / 100) * 110}px`;
     cuarta.style.top = `${coordenadaTop + (altoDiv / 100) * 35}px`;
+    
+    if (nivel == 1) {
+      primera.src = "../img/Elefante/A.png";
+      segunda.src = "../img/Elefante/B.png";
+      tercera.src = "../img/Elefante/C.png";
+      cuarta.src = "../img/Elefante/D.png";
+    }
+    
     if (nivel == 2) {
       primera.src = "../img/Jirafa/A.png";
       segunda.src = "../img/Jirafa/B.png";
