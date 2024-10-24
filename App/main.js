@@ -416,17 +416,17 @@ function testing() {
     }
     
     if (nivel == 2) {
-      primera.src = "../img/Jirafa/A.png";
-      segunda.src = "../img/Jirafa/B.png";
-      tercera.src = "../img/Jirafa/C.png";
-      cuarta.src = "../img/Jirafa/D.png";
-      puzzleImg.src = "../img/Jirafa.jpg";
+      primera.src = "../App/img/Jirafa/A.png";
+      segunda.src = "../App/img/Jirafa/B.png";
+      tercera.src = "../App/img/Jirafa/C.png";
+      cuarta.src = "../App/img/Jirafa/D.png";
+      puzzleImg.src = "../App/img/Jirafa.jpg";
     }
     if (nivel == 3) {
-      primera.src = "../img/Elefante/A.png";
-      segunda.src = "../img/Elefante/B.png";
-      tercera.src = "../img/Elefante/C.png";
-      cuarta.src = "../img/Elefante/D.png";
+      primera.src = "../App/img/Elefante/A.png";
+      segunda.src = "../App/img/Elefante/B.png";
+      tercera.src = "../App/img/Elefante/C.png";
+      cuarta.src = "../App/img/Elefante/D.png";
     }
   }
 }
